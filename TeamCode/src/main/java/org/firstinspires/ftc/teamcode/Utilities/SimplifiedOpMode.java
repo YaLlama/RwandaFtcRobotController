@@ -2,6 +2,9 @@ package org.firstinspires.ftc.teamcode.Utilities;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.Motor;
+import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.MotorEncoder;
+
 
 public abstract class SimplifiedOpMode extends LinearOpMode {
 
@@ -23,7 +26,9 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
     /**
      * What will happen when the stop button is pressed
      */
-    public void onStop(){}
+    public void onStop(){
+        Motor.stopMotors();
+    }
 
 
     @Override
@@ -50,6 +55,8 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
 
     private void update(){
         SimplifiedOpModeUtilities.updateTelemetry();
+        Motor.commandPowers();
+        MotorEncoder.updateEncoders();
     }
 
 

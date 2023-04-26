@@ -6,6 +6,7 @@ import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.Controller;
 import org.firstinspires.ftc.teamcode.Utilities.Telemetry.RobotLogTelemetry;
 import org.firstinspires.ftc.teamcode.Utilities.Telemetry.ThrowbackTelemetry;
 import org.firstinspires.ftc.teamcode.Utilities.Telemetry.VoidTelemetry;
