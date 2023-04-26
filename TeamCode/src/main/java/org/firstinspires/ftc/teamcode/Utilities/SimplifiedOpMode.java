@@ -11,7 +11,7 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
     /**
      * Initialize Servos and other code necessary to run the robot
      */
-    public abstract void initialize();
+    public abstract void setup();
 
     /**
      * Will repeat while the play button is not pressed
@@ -21,7 +21,7 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
     /**
      * What will run while the play button is pressed
      */
-    public abstract void runLoop();
+    public abstract void mainLoop();
 
     /**
      * What will happen when the stop button is pressed
@@ -35,7 +35,7 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         initializeUtilities();
-        initialize();
+        setup();
 
         do{
             initializationLoop();
@@ -43,7 +43,7 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
 
         while (opModeIsActive()){
             update();
-            runLoop();
+            mainLoop();
         }
         onStop();
 

@@ -49,17 +49,28 @@ public class SimplifiedOpModeUtilities {
     }
 
     /**
-     * telemetry print
+     * Telemetry print data
+     * @param s - identifier
+     * @param o - data
      */
-    public static void print(){
-
+    public static void println(String s, Object o){
+        multTelemetry.addData(s, o);
     }
+
+    /**
+     * Telemetry print string
+     * @param s - string
+     */
+    public static void println(String s){
+        multTelemetry.addLine(s);
+    }
+
 
     /**
      * Console print
      * @param o
      */
-    public static void printToComputer(Object o){
+    public static void printToComputer(String o){
         System.out.println(o);
     }
 
