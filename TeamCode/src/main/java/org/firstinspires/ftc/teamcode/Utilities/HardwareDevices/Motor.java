@@ -64,7 +64,7 @@ public class Motor {
      * @param maximumCurrent - maximum current in milli-amps before the motor will disable
      * @param powerScalar - if the motor powers need to be scaled down to match other motors
      */
-    public Motor(String name, boolean reversed, boolean brake, boolean encoder, double maximumCurrent, double powerScalar){
+    public Motor(String name, boolean reversed, boolean encoder, boolean brake, double maximumCurrent, double powerScalar){
         motors.add(this);
 
         motor = (DcMotorImplEx) SimplifiedOpModeUtilities.hardwareMap.dcMotor.get(name);
@@ -83,20 +83,20 @@ public class Motor {
         motor.setCurrentAlert(maximumCurrent, CurrentUnit.MILLIAMPS);
     }
 
-    public Motor(String name, boolean reversed, boolean brake, boolean encoder){
-        this(name, reversed, brake, encoder, 10000, 1);
+    public Motor(String name, boolean reversed, boolean encoder, boolean brake){
+        this(name, reversed, encoder, brake, 10000, 1);
     }
 
-    public Motor(String name, boolean reversed, boolean brake){
-        this(name, reversed, brake, false, 10000, 1);
+    public Motor(String name, boolean reversed, boolean encoder){
+        this(name, reversed, encoder, true, 10000, 1);
     }
 
     public Motor(String name, boolean reversed){
-        this(name, reversed, true, false, 10000, 1);
+        this(name, reversed, false, true, 10000, 1);
     }
 
     public Motor(String name){
-        this(name, false, true, false, 10000, 1);
+        this(name, false, false, true, 10000, 1);
     }
 
     private void checkMaximumLoad(){

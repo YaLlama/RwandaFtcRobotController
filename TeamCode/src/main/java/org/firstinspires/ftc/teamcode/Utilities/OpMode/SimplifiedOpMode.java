@@ -10,6 +10,7 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
 
     /**
      * Initialize Servos and other code necessary to run the robot
+     * Will execute once when the init button is pressed
      */
     public abstract void setup();
 
@@ -19,12 +20,17 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
     public void initializationLoop(){}
 
     /**
+     * Will execute when the play button is pressed once
+     */
+    public void onStart(){}
+
+    /**
      * What will run while the play button is pressed
      */
     public abstract void mainLoop();
 
     /**
-     * What will happen when the stop button is pressed
+     * Will execute once when the stop button is pressed
      */
     public void onStop(){
         Motor.stopMotors();
@@ -41,8 +47,10 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
             initializationLoop();
         }while (opModeInInit());
 
+        onStart();
+
         while (opModeIsActive()){
-            update();
+            updateUtilities();
             mainLoop();
         }
         onStop();
@@ -53,7 +61,7 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
         SimplifiedOpModeUtilities.setOpMode(this);
     }
 
-    private void update(){
+    private void updateUtilities(){
         SimplifiedOpModeUtilities.updateTelemetry();
         SimplifiedOpModeUtilities.updateControllers();
         Motor.commandPowers();

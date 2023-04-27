@@ -59,10 +59,10 @@ public class SimplifiedOpModeUtilities {
 
     /**
      * Telemetry print string
-     * @param s - string
+     * @param o - string
      */
-    public static void println(String s){
-        multTelemetry.addLine(s);
+    public static void println(Object o){
+        multTelemetry.addLine((String) o);
     }
 
     /**
