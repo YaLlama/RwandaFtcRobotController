@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Utilities;
+package org.firstinspires.ftc.teamcode.Utilities.OpMode;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
@@ -23,7 +23,7 @@ public class SimplifiedOpModeUtilities {
     public static Telemetry dashboardTelemetry = dashboard.getTelemetry();
     public static ThrowbackTelemetry multTelemetry;
 
-    public static Controller driver, operator;
+    public static Controller driver1, driver2;
     public static List<LynxModule> allHubs;
 
     /**
@@ -37,8 +37,8 @@ public class SimplifiedOpModeUtilities {
         telemetry.setMsTransmissionInterval(5);
         multTelemetry = new ThrowbackTelemetry(new MultipleTelemetry(telemetry, dashboardTelemetry));
 
-        driver = new Controller(opMode.gamepad1);
-        operator = new Controller(opMode.gamepad2);
+        driver1 = new Controller(opMode.gamepad1);
+        driver2 = new Controller(opMode.gamepad2);
 
         allHubs = hardwareMap.getAll(LynxModule.class);
 
@@ -65,13 +65,12 @@ public class SimplifiedOpModeUtilities {
         multTelemetry.addLine(s);
     }
 
-
     /**
      * Console print
-     * @param o
+     * @param s - string
      */
-    public static void printToComputer(String o){
-        System.out.println(o);
+    public static void printlnToComputer(String s){
+        System.out.println(s);
     }
 
     public static boolean isInit(){
@@ -97,7 +96,7 @@ public class SimplifiedOpModeUtilities {
     }
 
     public static void updateControllers(){
-        driver.update(); operator.update();
+        driver1.update(); driver2.update();
     }
 
 

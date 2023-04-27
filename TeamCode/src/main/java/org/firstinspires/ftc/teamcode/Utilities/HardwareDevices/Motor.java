@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
-import org.firstinspires.ftc.teamcode.Utilities.SimplifiedOpModeUtilities;
+import org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUtilities;
 
 import java.util.ArrayList;
 

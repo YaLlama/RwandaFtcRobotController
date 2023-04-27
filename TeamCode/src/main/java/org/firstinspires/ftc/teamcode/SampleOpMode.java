@@ -1,9 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
-import static org.firstinspires.ftc.teamcode.Utilities.SimplifiedOpModeUtilities.*;
+import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.*;
+import static org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUtilities.*;
 
-import org.firstinspires.ftc.teamcode.Utilities.SimplifiedOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpMode;
+
+//@Disabled
+@Autonomous (name = "New Autonomous")
 public class SampleOpMode extends SimplifiedOpMode {
     @Override
     public void setup() {

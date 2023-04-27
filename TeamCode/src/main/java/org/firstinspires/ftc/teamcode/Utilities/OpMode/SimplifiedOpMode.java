@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Utilities;
+package org.firstinspires.ftc.teamcode.Utilities.OpMode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -55,6 +55,7 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
 
     private void update(){
         SimplifiedOpModeUtilities.updateTelemetry();
+        SimplifiedOpModeUtilities.updateControllers();
         Motor.commandPowers();
         MotorEncoder.updateEncoders();
     }

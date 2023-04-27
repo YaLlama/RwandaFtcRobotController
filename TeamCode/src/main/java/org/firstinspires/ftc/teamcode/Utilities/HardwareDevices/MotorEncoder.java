@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.Utilities.HardwareDevices;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.teamcode.Utilities.SimplifiedOpModeUtilities;
+import org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUtilities;
 
 import java.util.ArrayList;
 
