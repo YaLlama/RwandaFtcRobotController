@@ -1,10 +1,10 @@
-package org.firstinspires.ftc.teamcode.ExampleClasses;
+package org.firstinspires.ftc.teamcode.Examples.Classes;
 
 import static org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUtilities.println;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.ExampleOpModes.LinearSlidesOpModeExample;
+import org.firstinspires.ftc.teamcode.Examples.OpModes.LinearSlidesOpModeExample;
 import org.firstinspires.ftc.teamcode.Utilities.Control.PID;
 import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.Motor;
 

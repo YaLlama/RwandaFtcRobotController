@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.ExampleOpModes;
+package org.firstinspires.ftc.teamcode.Examples.OpModes;
 
 import org.firstinspires.ftc.teamcode.Utilities.Control.PID;
 import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.*;

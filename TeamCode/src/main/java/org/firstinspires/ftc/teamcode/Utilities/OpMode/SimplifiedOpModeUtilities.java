@@ -73,15 +73,15 @@ public class SimplifiedOpModeUtilities {
         System.out.println(s);
     }
 
-    public static boolean isInit(){
+    public static boolean isInInit(){
         return opMode.opModeInInit();
     }
     public static boolean isActive(){
         return opMode.opModeIsActive();
     }
 
-    public static boolean runThread(){
-        return isInit() || isActive();
+    public static boolean mainThreadRunning(){
+        return isInInit() || isActive();
     }
 
     public static void setNoTelemetry(){
