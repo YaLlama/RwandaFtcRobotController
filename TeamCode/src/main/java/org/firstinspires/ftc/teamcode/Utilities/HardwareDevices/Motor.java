@@ -31,6 +31,10 @@ public class Motor {
         }
     }
 
+    public static void resetMotorList(){
+        motors.clear();
+    }
+
     /**
      * sets all motor powers to zero
      */

@@ -35,7 +35,6 @@ public class Controller {
 		dpad_up.update(gamepad.dpad_up); dpad_down.update(gamepad.dpad_down); dpad_left.update(gamepad.dpad_left); dpad_right.update(gamepad.dpad_right);
 		rightBumper.update(gamepad.right_bumper); leftBumper.update(gamepad.left_bumper);
 		share.update(gamepad.share); touchpad.update(gamepad.touchpad); options.update(gamepad.options);
-		
 		rightTrigger.update(gamepad.right_trigger); leftTrigger.update(gamepad.left_trigger);
 
 	}
@@ -55,26 +54,25 @@ public class Controller {
 		public void update(boolean button) {
 			boolean wasHeld = hold;
 			tap = (hold = button) && !wasHeld;
+			if(tap) toggle = !toggle;
 			if(!button) timeHeld.reset();
-
 		}
 
 		public float rawValue() { return rawVal; }
 
-		public boolean pressed() { return hold; }
+		public boolean isPressed() { return hold; }
 		
-		public boolean taped() { return tap; }
+		public boolean isTaped() { return tap; }
 		
-		public boolean toggled() {
-			if (taped()) toggle = !toggle;
-			return (toggle);
-		}
+		public boolean isToggled() { return toggle; }
 
 		public void setToggle(boolean newValue){
 			toggle = newValue;
 		}
 
-		public boolean heldFor(double seconds){
+		public void toggle(){ toggle = !toggle; }
+
+		public boolean isHeldFor(double seconds){
 			return timeHeld.seconds() >= seconds;
 		}
 

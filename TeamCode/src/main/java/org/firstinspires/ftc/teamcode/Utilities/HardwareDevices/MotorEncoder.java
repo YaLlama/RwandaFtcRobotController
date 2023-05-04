@@ -24,6 +24,10 @@ public class MotorEncoder {
         }
     }
 
+    public static void resetEncoderList(){
+        encoders.clear();
+    }
+
     /**
      *
      * @return - returns the encoder value

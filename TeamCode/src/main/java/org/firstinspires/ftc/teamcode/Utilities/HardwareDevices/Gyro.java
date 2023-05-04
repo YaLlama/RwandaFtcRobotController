@@ -1,5 +1,9 @@
 package org.firstinspires.ftc.teamcode.Utilities.HardwareDevices;
 
+import static org.firstinspires.ftc.teamcode.Utilities.Math.*;
+
+import androidx.core.math.MathUtils;
+
 import com.qualcomm.hardware.bosch.BNO055IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -8,16 +12,20 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUtilities;
 
+import java.util.ArrayList;
+
 public class Gyro {
 
     private BNO055IMU controlHubIMU;
 
+    public static ArrayList<Gyro> gyros = new ArrayList<>();
     private double wrappedHeading = 0;
     private double rawHeading = 0;
     private double offset = 0;
 
-    public Gyro(){
-        controlHubIMU = imuConstructor("imu");
+    public Gyro(String name){
+        gyros.add(this);
+        controlHubIMU = imuConstructor(name);
     }
 
     public double getHeading(){
@@ -29,11 +37,26 @@ public class Gyro {
         return rawHeading;
     }
 
-    public void reset(){
-        offset = rawHeading;
+    public void resetHeading(){
+        offset += rawHeading;
     }
 
-    public void update(){
+    public void setCurrentHeading(double heading){
+        resetHeading();
+        offset -= heading;
+    }
+
+    public static void updateAngles(){
+        for(Gyro g : gyros){
+            g.update();
+        }
+    }
+
+    public static void resetGyroList(){
+        gyros.clear();
+    }
+
+    private void update(){
         Orientation angles = controlHubIMU.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
 
         //TODO revHub orientation might matter
@@ -43,18 +66,7 @@ public class Gyro {
 
         rawHeading = rawYaw;
         wrappedHeading = wrapAngle(rawYaw);
-    }
 
-    public double wrapAngle(double angle){
-        //Makes sure angle is from -Pi to Pi
-        while (angle > Math.PI){
-            angle -= Math.PI * 2;
-        }
-        while (angle < -Math.PI){
-            angle += Math.PI * 2;
-        }
-
-        return angle;
     }
 
     private BNO055IMU imuConstructor(String deviceName){

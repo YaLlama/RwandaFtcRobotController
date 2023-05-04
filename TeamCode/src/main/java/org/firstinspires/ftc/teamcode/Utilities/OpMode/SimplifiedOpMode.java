@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Utilities.OpMode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.Gyro;
 import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.Motor;
 import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.MotorEncoder;
 
@@ -36,7 +37,6 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
         Motor.stopMotors();
     }
 
-
     @Override
     public void runOpMode() throws InterruptedException {
 
@@ -59,6 +59,9 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
 
     private void initializeUtilities(){
         SimplifiedOpModeUtilities.setOpMode(this);
+        Motor.resetMotorList();
+        MotorEncoder.resetEncoderList();
+        Gyro.resetGyroList();
     }
 
     private void updateUtilities(){
@@ -66,6 +69,7 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
         SimplifiedOpModeUtilities.updateControllers();
         Motor.commandPowers();
         MotorEncoder.updateEncoders();
+        Gyro.updateAngles();
     }
 
 
