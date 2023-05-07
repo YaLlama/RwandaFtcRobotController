@@ -22,10 +22,10 @@ public class LinearSlidesClassExample {
     /**
      * Constructor - what executes when "new LinearSlidesClassExample();" is called
      */
-    public LinearSlidesClassExample(){
+    public LinearSlidesClassExample(Motor leftLiftMotor, Motor rightLiftMotor){
         //Create motor objects
-        leftLiftMotor     = new Motor("leftLiftMotor");
-        rightLiftMotor    = new Motor("rightLiftMotor", true, true);
+        this.leftLiftMotor     = leftLiftMotor;
+        this.rightLiftMotor    = rightLiftMotor;
 
         //Create runtime
         timer = new ElapsedTime();

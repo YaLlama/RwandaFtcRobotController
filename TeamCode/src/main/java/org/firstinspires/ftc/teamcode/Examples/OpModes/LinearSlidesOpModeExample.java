@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Examples.OpModes;
 
+import org.firstinspires.ftc.teamcode.Examples.ExampleHardware;
 import org.firstinspires.ftc.teamcode.Utilities.Control.PID;
 import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.*;
 import org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpMode;
@@ -26,8 +27,7 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
     }
 
     //Global Object Declarations
-    Motor leftLiftMotor;
-    Motor rightLiftMotor;
+    ExampleHardware hardware;
 
     PID slidesPID;
 
@@ -39,8 +39,7 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
     @Override
     public void setup() {
         //Create motor objects
-        leftLiftMotor     = new Motor("leftLiftMotor");
-        rightLiftMotor    = new Motor("rightLiftMotor", true, true);
+        hardware = new ExampleHardware();
 
         //Create runtime
         timer = new ElapsedTime();
@@ -69,14 +68,14 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
     @Override
     public void mainLoop() {
         //get the current slide position from the motor encoder
-        double currentSlidesPosition = rightLiftMotor.encoder.getPosition();
+        double currentSlidesPosition = hardware.rightLiftMotor.encoder.getPosition();
 
         //Give in the distance the slides are from their target and store the power the slides need to move at to reach it
         double slidesPower = slidesPID.getCorrection(currentSlidesPosition - ExampleDashboard.targetSlidesPosition);
 
         //Tell the motors to spin at the required power to reach their target
-        rightLiftMotor.setPower(slidesPower);
-        leftLiftMotor.setPower(slidesPower);
+        hardware.rightLiftMotor.setPower(slidesPower);
+        hardware.leftLiftMotor.setPower(slidesPower);
 
         //print useful information to the screen
         println("Current Slides Position", currentSlidesPosition);

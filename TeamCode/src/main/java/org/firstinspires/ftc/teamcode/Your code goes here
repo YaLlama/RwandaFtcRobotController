@@ -1,0 +1,26 @@
+
+Welcome to the FIRST Tech Challenge(FTC)!
+
+Right click on the folder this file belongs to and hover over "New" to create new files:
+
+You can either select "Java Class" at the top, or navigate lower to "Package" to create folders to organize your code
+
+Code in FTC is separated into two main categories:
+    Classes
+    OpModes
+
+OpMode is FTC's specific way of labeling the code that will run.
+In order to create an OpMode, when you create a new class, you must then type "extends SimplifiedOpMode"
+ after where it says "public class [your class name]"
+It will then require that you implement two methods:
+    setup - this code will run once when the init button is pressed
+    mainLoop - this code will loop while the play button is pressed, and the stop button isnt
+
+Classes are documents of code you will write to stay organized
+Classes will contain Functions you will create - functions are pieces of code that return an output when given input information
+Classes and Functions themselves don't execute unless you tell them to - you run them by calling them in the OpMode
+Essentially the purpose of Classes and Functions is to remove repeated code, so rather than copy pasting code,
+you can reference a shortcut that you have created
+
+You will find examples in the examples folder on how to do the things mentioned above, as well as sample code
+of useful built-in functions in the FTC SDK (Software Development Kit)
