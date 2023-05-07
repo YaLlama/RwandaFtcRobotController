@@ -20,7 +20,27 @@ Classes are documents of code you will write to stay organized
 Classes will contain Functions you will create - functions are pieces of code that return an output when given input information
 Classes and Functions themselves don't execute unless you tell them to - you run them by calling them in the OpMode
 Essentially the purpose of Classes and Functions is to remove repeated code, so rather than copy pasting code,
-you can reference a shortcut that you have created
+you can reference a shortcut that you have created.
+
+In order to execute functions you have written in the same class, simply type the name of the function.
+
+In order to access code you have written in other files (classes) there are a couple key points to consider:
+
+Private vs Public - before the data type of the return or variable is written, writing "public" or "private" will make it available
+    to other classes, or not, respectively
+Static - if static is included in the declaration, to access it, you simply type the name of the class and then "." then the name
+    of what you are trying to access
+
+If a function or variable is public, and not static, it is accessed through what is called an object. The main advantage of objects
+    is that there can be multiple instances, effectively meaning the class becomes a data type, so there can be multiple variables
+    that are each a different version of the class.
+
+To create an object, define a variable as you would normally, but with the data type being the name of the file. Then in a spot
+where the code will only execute once, set it equal to "new" plus the name of the file then "()"
+This will create an instance, and assign it to the object you previously defined
+
+To then access public non-static functions and variables of the file (in this case object) write the name of the object, then "."
+and then a list of all the public attributes should pop up, and either select or write out the name of the one you desire.
 
 You will find examples in the examples folder on how to do the things mentioned above, as well as sample code
 of useful built-in functions in the FTC SDK (Software Development Kit)
