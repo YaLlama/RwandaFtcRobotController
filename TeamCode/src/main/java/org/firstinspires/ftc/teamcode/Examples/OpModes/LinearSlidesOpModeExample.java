@@ -1,8 +1,7 @@
 package org.firstinspires.ftc.teamcode.Examples.OpModes;
 
-import org.firstinspires.ftc.teamcode.Examples.ExampleHardware;
+import org.firstinspires.ftc.teamcode.Hardware;
 import org.firstinspires.ftc.teamcode.Utilities.Control.PID;
-import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.*;
 import org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpMode;
 
 import static org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUtilities.*;
@@ -27,10 +26,7 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
     }
 
     //Global Object Declarations
-    ExampleHardware hardware;
-
     PID slidesPID;
-
     ElapsedTime timer;
 
     /**
@@ -38,9 +34,6 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
      */
     @Override
     public void setup() {
-        //Create motor objects
-        hardware = new ExampleHardware();
-
         //Create runtime
         timer = new ElapsedTime();
 
@@ -79,7 +72,7 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
 
         //print useful information to the screen
         println("Current Slides Position", currentSlidesPosition);
-        println("Target Slides Position", ExampleDashboard.targetSlidesPosition);
+        println("Target Slides Position: " + ExampleDashboard.targetSlidesPosition);
         println("Slides Power", slidesPower);
         println("Time Running", timer.seconds());
     }

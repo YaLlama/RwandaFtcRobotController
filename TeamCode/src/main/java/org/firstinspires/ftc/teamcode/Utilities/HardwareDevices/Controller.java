@@ -62,7 +62,7 @@ public class Controller {
 
 		public boolean isPressed() { return hold; }
 		
-		public boolean isTaped() { return tap; }
+		public boolean isTapped() { return tap; }
 		
 		public boolean isToggled() { return toggle; }
 

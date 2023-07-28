@@ -6,6 +6,7 @@ import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.Hardware;
 import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.Controller;
 import org.firstinspires.ftc.teamcode.Utilities.Telemetry.RobotLogTelemetry;
 import org.firstinspires.ftc.teamcode.Utilities.Telemetry.ThrowbackTelemetry;
@@ -17,7 +18,7 @@ public class SimplifiedOpModeUtilities {
 
     public static HardwareMap hardwareMap;
     public static SimplifiedOpMode opMode;
-
+    public static Hardware hardware;
     public static Telemetry telemetry;
     public static FtcDashboard dashboard = FtcDashboard.getInstance();
     public static Telemetry dashboardTelemetry = dashboard.getTelemetry();
@@ -33,6 +34,7 @@ public class SimplifiedOpModeUtilities {
     public static void setOpMode(SimplifiedOpMode opMode){
         SimplifiedOpModeUtilities.opMode = opMode;
         hardwareMap = opMode.hardwareMap;
+        hardware = new Hardware();
         telemetry = opMode.telemetry;
         telemetry.setMsTransmissionInterval(5);
         multTelemetry = new ThrowbackTelemetry(new MultipleTelemetry(telemetry, dashboardTelemetry));

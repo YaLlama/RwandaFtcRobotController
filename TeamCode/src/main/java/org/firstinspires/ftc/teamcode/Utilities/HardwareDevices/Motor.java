@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class Motor {
 
     public static ArrayList<Motor> motors = new ArrayList<>();
-    private DcMotorImplEx motor;
+    private final DcMotorImplEx motor;
     public MotorEncoder encoder;
 
     private final double currentOverloadBuffer = 300;
     private final double powerScalar;
-    private ElapsedTime currentOverloadTimer = new ElapsedTime();
+    private final ElapsedTime currentOverloadTimer = new ElapsedTime();
 
     private double power = 0;
 
@@ -61,7 +61,6 @@ public class Motor {
     }
 
     /**
-     *
      * @param name - hardware device name
      * @param reversed - whether the motor should run backwards
      * @param encoder - if the motor has an attached encoder

@@ -1,10 +1,10 @@
-package org.firstinspires.ftc.teamcode.Examples;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.*;
 
-public class ExampleHardware {
+public class Hardware {
 
     public Motor   driveLeftFront, driveRightFront,
             driveLeftBack,  driveRightBack;
@@ -22,7 +22,7 @@ public class ExampleHardware {
     /**
      * Constructor - will create all the hardware objects
      */
-    public ExampleHardware(){
+    public Hardware(){
         //get all the drive motor
         driveLeftFront  = new Motor("driveLeftFront", true);
         driveLeftBack   = new Motor("driveLeftBack", true);

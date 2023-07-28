@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.Utilities.HardwareDevices;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorImplEx;
 
 import org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUtilities;
 
@@ -10,9 +10,10 @@ public class MotorEncoder {
 
     public static ArrayList<MotorEncoder> encoders = new ArrayList<>();
 
-    DcMotor encoder;
+    DcMotorImplEx encoder;
     double position = 0;
     double offset = 0;
+    double velocity = 0;
 
     /**
      * Gets new encoder values for all encoders
@@ -29,7 +30,6 @@ public class MotorEncoder {
     }
 
     /**
-     *
      * @return - returns the encoder value
      */
     public double getPosition(){
@@ -37,23 +37,31 @@ public class MotorEncoder {
     }
 
     /**
-     * retets the encdoer and offset to 0
+     * @return - returns encoder velocity
+     */
+    public double getVelocity() {
+        return velocity;
+    }
+
+    /**
+     * returns the encoder and offset to 0
      */
     public void resetEncoder(){
         position = 0;
         offset = 0;
 
-        encoder.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        encoder.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        encoder.setMode(DcMotorImplEx.RunMode.STOP_AND_RESET_ENCODER);
+        encoder.setMode(DcMotorImplEx.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     public MotorEncoder(String name){
         encoders.add(this);
-        encoder = SimplifiedOpModeUtilities.hardwareMap.dcMotor.get(name);
+        encoder = (DcMotorImplEx) SimplifiedOpModeUtilities.hardwareMap.dcMotor.get(name);
     }
 
     private void update(){
         position = encoder.getCurrentPosition();
+        velocity = encoder.getVelocity();
     }
 
     public void setOffset(double offset){
