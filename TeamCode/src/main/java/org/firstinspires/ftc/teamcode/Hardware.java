@@ -9,7 +9,7 @@ public class Hardware {
     public Motor   driveLeftFront, driveRightFront,
             driveLeftBack,  driveRightBack;
 
-    public Motor   leftLiftMotor, rightLiftMotor;
+    public Motor   liftLeftMotor, liftRightMotor;
     public Motor   leftIntakeMotor, rightIntakeMotor;
 
     public MotorEncoder liftEncoder;
@@ -33,15 +33,15 @@ public class Hardware {
         gyro = new Gyro("imu");
 
         //set encoder to true if the motor's encoder is plugged into the same port as the motor
-        leftLiftMotor   = new Motor("leftLiftMotor", false, true);
-        rightLiftMotor  = new Motor("rightLiftMotor", true);
+        liftLeftMotor   = new Motor("liftLeftMotor", false, true);
+        liftRightMotor  = new Motor("liftRightMotor", true);
 
         //making the lift encoder easier to access
-        liftEncoder = leftLiftMotor.encoder;
-
-        //The encoder is identified based on which motor port it is plugged into
-        xOdometryWheel  = new MotorEncoder("leftIntakeMotor");
-        yOdometryWheel  = new MotorEncoder("rightIntakeMotor");
+        liftEncoder = liftLeftMotor.encoder;
+//
+//        //The encoder is identified based on which motor port it is plugged into
+//        xOdometryWheel  = new MotorEncoder("leftIntakeMotor");
+//        yOdometryWheel  = new MotorEncoder("rightIntakeMotor");
 
     }
 }

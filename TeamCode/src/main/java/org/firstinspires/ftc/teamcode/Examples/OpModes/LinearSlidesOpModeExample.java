@@ -11,7 +11,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Disabled
 //What will be displayed on the phone
 @TeleOp (name = "Linear Slides Example")
 
@@ -21,7 +20,7 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
     //The section title that will be displayed on FTC dashboard
     public static class ExampleDashboard{
         // everything needs to be public static
-        public static double slidesP = 0, slidesI = 0, slidesD = 0, slidesFeedForward = 0, slidesMinimumPower = 0;
+        public static double slidesP = 0.008, slidesI = 0, slidesD = 0.002, slidesFeedForward = 0.15, slidesMinimumPower = 0.1, deadZone = 20;
         public static double targetSlidesPosition = 0;
     }
 
@@ -44,6 +43,10 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
         slidesPID.setFeedForward(ExampleDashboard.slidesFeedForward);
         //Motor power required for the slides to move
         slidesPID.setLowerLimit(ExampleDashboard.slidesMinimumPower);
+        //Distance from target that power will be set to 0
+        slidesPID.setDeadZone(ExampleDashboard.deadZone);
+
+        println("Initialized");
     }
 
     /**
@@ -61,14 +64,20 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
     @Override
     public void mainLoop() {
         //get the current slide position from the motor encoder
-        double currentSlidesPosition = hardware.rightLiftMotor.encoder.getPosition();
+        double currentSlidesPosition = hardware.liftEncoder.getPosition();
+
+        //Update PID with current set values
+        slidesPID.setConstants(LinearSlidesOpModeExample.ExampleDashboard.slidesP, LinearSlidesOpModeExample.ExampleDashboard.slidesI, LinearSlidesOpModeExample.ExampleDashboard.slidesD);
+        slidesPID.setFeedForward(ExampleDashboard.slidesFeedForward);
+        slidesPID.setLowerLimit(ExampleDashboard.slidesMinimumPower);
+        slidesPID.setDeadZone(ExampleDashboard.deadZone);
 
         //Give in the distance the slides are from their target and store the power the slides need to move at to reach it
-        double slidesPower = slidesPID.getCorrection(currentSlidesPosition - ExampleDashboard.targetSlidesPosition);
+        double slidesPower = slidesPID.getCorrection(ExampleDashboard.targetSlidesPosition - currentSlidesPosition);
 
         //Tell the motors to spin at the required power to reach their target
-        hardware.rightLiftMotor.setPower(slidesPower);
-        hardware.leftLiftMotor.setPower(slidesPower);
+        hardware.liftRightMotor.setPower(slidesPower);
+        hardware.liftLeftMotor.setPower(slidesPower);
 
         //print useful information to the screen
         println("Current Slides Position", currentSlidesPosition);

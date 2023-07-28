@@ -75,7 +75,7 @@ public class PID {
         double iComponent = integralSum * deltaTime;
 
         //Derivative Component
-        double dComponent = (error - previousError) / deltaTime;
+        double dComponent = (error - previousError) / deltaTime * kD;
 
         //FeedForward Component
         double lowerLimitComponent = Math.signum(error) * lowerLimitConstant;

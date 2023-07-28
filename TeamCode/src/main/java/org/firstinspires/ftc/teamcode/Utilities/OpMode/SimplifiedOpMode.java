@@ -46,6 +46,7 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
 
         do{
             initializationLoop();
+            updateUtilities();
         }while (opModeInInit());
 
         onStart();
@@ -58,10 +59,10 @@ public abstract class SimplifiedOpMode extends LinearOpMode {
     }
 
     private void initializeUtilities(){
-        SimplifiedOpModeUtilities.setOpMode(this);
         Motor.resetMotorList();
         MotorEncoder.resetEncoderList();
         Gyro.resetGyroList();
+        SimplifiedOpModeUtilities.setOpMode(this);
     }
 
     private void updateUtilities(){
