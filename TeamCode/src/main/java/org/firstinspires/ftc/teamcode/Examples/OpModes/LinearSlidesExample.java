@@ -1,20 +1,18 @@
 package org.firstinspires.ftc.teamcode.Examples.OpModes;
 
-import org.firstinspires.ftc.teamcode.Hardware;
 import org.firstinspires.ftc.teamcode.Utilities.Control.PID;
 import org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpMode;
 
 import static org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUtilities.*;
 
 import com.acmerobotics.dashboard.config.Config;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //What will be displayed on the phone
 @TeleOp (name = "Linear Slides Example")
 
-public class LinearSlidesOpModeExample extends SimplifiedOpMode {
+public class LinearSlidesExample extends SimplifiedOpMode {
 
     @Config
     //The section title that will be displayed on FTC dashboard
@@ -37,7 +35,7 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
         timer = new ElapsedTime();
 
         //Create PID
-        slidesPID = new PID(LinearSlidesOpModeExample.ExampleDashboard.slidesP, LinearSlidesOpModeExample.ExampleDashboard.slidesI, LinearSlidesOpModeExample.ExampleDashboard.slidesD);
+        slidesPID = new PID(LinearSlidesExample.ExampleDashboard.slidesP, LinearSlidesExample.ExampleDashboard.slidesI, LinearSlidesExample.ExampleDashboard.slidesD);
 
         //Motor power required for the slides to hold a height without moving
         slidesPID.setFeedForward(ExampleDashboard.slidesFeedForward);
@@ -67,7 +65,7 @@ public class LinearSlidesOpModeExample extends SimplifiedOpMode {
         double currentSlidesPosition = hardware.liftEncoder.getPosition();
 
         //Update PID with current set values
-        slidesPID.setConstants(LinearSlidesOpModeExample.ExampleDashboard.slidesP, LinearSlidesOpModeExample.ExampleDashboard.slidesI, LinearSlidesOpModeExample.ExampleDashboard.slidesD);
+        slidesPID.setConstants(LinearSlidesExample.ExampleDashboard.slidesP, LinearSlidesExample.ExampleDashboard.slidesI, LinearSlidesExample.ExampleDashboard.slidesD);
         slidesPID.setFeedForward(ExampleDashboard.slidesFeedForward);
         slidesPID.setLowerLimit(ExampleDashboard.slidesMinimumPower);
         slidesPID.setDeadZone(ExampleDashboard.deadZone);

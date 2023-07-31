@@ -1,10 +1,28 @@
-package org.firstinspires.ftc.teamcode.Examples.Classes;
+package org.firstinspires.ftc.teamcode.Examples.OpModes;
 
 import static org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUtilities.println;
 
-public class StateMachineExample {
+import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpMode;
+
+public class StateMachineExample extends SimplifiedOpMode {
 
     private Direction direction;
+
+    private ElapsedTime timer;
+
+    StateMachineExample s;
+
+    @Override
+    public void setup() {
+        s = new StateMachineExample(Direction.Up);
+    }
+
+    @Override
+    public void mainLoop() {
+        if()
+    }
 
     /** creation of an enum
      * An Enum is a variable that is processed by the computer as a number
@@ -16,11 +34,15 @@ public class StateMachineExample {
     }
 
     public StateMachineExample(Direction initialDirection){
+        timer = new ElapsedTime();
         direction = initialDirection;
     }
 
-    public void changeDirection(Direction newDirection){
-        direction = newDirection;
+    public void setDirection(Direction newDirection){
+        if(newDirection != getDirection()){
+            direction = newDirection;
+            timer.reset();
+        }
     }
 
     public Direction getDirection(){
@@ -46,6 +68,7 @@ public class StateMachineExample {
             case Right:
                 println("Right");
         }
+        println("Duration", timer.seconds());
     }
 
 }

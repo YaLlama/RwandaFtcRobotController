@@ -4,7 +4,7 @@ import static org.firstinspires.ftc.teamcode.Utilities.OpMode.SimplifiedOpModeUt
 
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.Examples.OpModes.LinearSlidesOpModeExample;
+import org.firstinspires.ftc.teamcode.Examples.OpModes.LinearSlidesExample;
 import org.firstinspires.ftc.teamcode.Utilities.Control.PID;
 import org.firstinspires.ftc.teamcode.Utilities.HardwareDevices.Motor;
 
@@ -31,12 +31,12 @@ public class LinearSlidesClassExample {
         timer = new ElapsedTime();
 
         //Create PID
-        slidesPID = new PID(LinearSlidesOpModeExample.ExampleDashboard.slidesP, LinearSlidesOpModeExample.ExampleDashboard.slidesI, LinearSlidesOpModeExample.ExampleDashboard.slidesD);
+        slidesPID = new PID(LinearSlidesExample.ExampleDashboard.slidesP, LinearSlidesExample.ExampleDashboard.slidesI, LinearSlidesExample.ExampleDashboard.slidesD);
 
         //Motor power required for the slides to hold a height without moving
-        slidesPID.setFeedForward(LinearSlidesOpModeExample.ExampleDashboard.slidesFeedForward);
+        slidesPID.setFeedForward(LinearSlidesExample.ExampleDashboard.slidesFeedForward);
         //Motor power required for the slides to move
-        slidesPID.setLowerLimit(LinearSlidesOpModeExample.ExampleDashboard.slidesMinimumPower);
+        slidesPID.setLowerLimit(LinearSlidesExample.ExampleDashboard.slidesMinimumPower);
     }
 
     public void onStart() {
@@ -52,7 +52,7 @@ public class LinearSlidesClassExample {
         double currentSlidesPosition = rightLiftMotor.encoder.getPosition();
 
         //Give in the distance the slides are from their target and store the power the slides need to move at to reach it
-        double slidesPower = slidesPID.getCorrection(currentSlidesPosition - LinearSlidesOpModeExample.ExampleDashboard.targetSlidesPosition);
+        double slidesPower = slidesPID.getCorrection(currentSlidesPosition - LinearSlidesExample.ExampleDashboard.targetSlidesPosition);
 
         //Tell the motors to spin at the required power to reach their target
         rightLiftMotor.setPower(slidesPower);
@@ -60,7 +60,7 @@ public class LinearSlidesClassExample {
 
         //print useful information to the screen
         println("Current Slides Position", currentSlidesPosition);
-        println("Target Slides Position", LinearSlidesOpModeExample.ExampleDashboard.targetSlidesPosition);
+        println("Target Slides Position", LinearSlidesExample.ExampleDashboard.targetSlidesPosition);
         println("Slides Power", slidesPower);
         println("Time Running", timer.seconds());
     }
